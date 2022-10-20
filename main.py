@@ -36,7 +36,7 @@ class CaloriesCalculator(Calculator):
         return remained
 
 class CashCalculator(Calculator):
-    def get_cach_remained(self, currency):
+    def get_cash_remained(self, currency):
         remained = self.limit - self.get_today_stats()
         text = ""
         USD_RATE = 60.03
@@ -51,9 +51,13 @@ class CashCalculator(Calculator):
             text = "Денег нет: ваш долг " + str(remained / -1) + " " + currency
         else:
             text = "Денег нет"
-            return text
+        return text
 
 
 cash_calculator = CashCalculator(1000)
-
-print(cash_calculator.get_today_cash_remained("rub"))
+cash_calculator.add_record(Record(amount=145, commint='чай'))
+cash_calculator.add_record(Record(amount=515, commint='продукты'))
+cash_calculator.add_record(Record(amount=60, commint='хоз товары'))
+cash_calculator.add_record(Record(amount=45, commint='проезд'))
+cash_calculator.add_record(Record(amount=90, commint='рынок'))
+print(cash_calculator.get_cash_remained("rub"))
