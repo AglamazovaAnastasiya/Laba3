@@ -8,7 +8,7 @@ class Record:
         else:
             self.date = dt.date.today()
 
-class Calculator(Record):
+class Calculator():
     def __init__(self, limit):
         self.limit = limit
         self.records = []
